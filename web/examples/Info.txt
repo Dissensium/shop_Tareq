@@ -1,0 +1,272 @@
+#####################################################################################################################
+l'ancien header
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!---------------------------------------------------------------------- A mettre dans un fichier -->
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+         
+    </style>
+</head>
+<body>
+    <!---------------------------------------------------------------------- Top Menu -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://localhost/shop_tareq/web/viewhomePage.php">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="viewdevlinksPage.php">Dev links</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+#####################################################################################################################
+l'ancien Footer
+    <!---------------------------------------------------------------------- Footer -->
+    <footer class="container-fluid text-center">
+        <p>Footer site en déveleppement par Tareq Zeggani et papouni</p>
+    </footer>
+
+#####################################################################################################################
+l'ancien content left
+            <div class="col-sm-2 sidenav">
+                <p><a href="http://localhost/shop_tareq/web/viewCarouselPage.php">viewCarouselPage</a></p>
+                <p><a href="http://localhost/shop_tareq/web/viewCarouselStaticPage.php">viewCarouselStaticPage</a></p>
+                <p><a href="#">Link</a></p>
+                <p><a href="#">Link</a></p>
+            </div>
+
+#####################################################################################################################
+l'ancien content
+             <div class="container-fluid text-center">
+        <div class="row content">
+
+            <!---------------------------------------------------------------------- Left Menu / catégories --> 
+            <?php  include_once "includeViewContentLeft.php"; ?>
+            <!---------------------------------------------------------------------- partie principale -->
+            
+            <div class="col-sm-8 text-left">
+                <h1>Welcome</h1>
+                <p> Bienvenue dans le site shop pour la vente du matériel de sport</p>
+                <hr>
+                <h3>Test</h3>
+                <p>Lorem ipsum...</p>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a href="img/lights.jpg" target="_blank">
+                                <img src="img/lights.jpg" alt="Lights" style="width:100%">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a href="img/nature.jpg" target="_blank">
+                                <img src="img/nature.jpg" alt="Nature" style="width:100%">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a href="img/fjords.jpg" target="_blank">
+                                <img src="img/fjords.jpg" alt="Fjords" style="width:100%">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a href="img/fjords.jpg" target="_blank">
+                                <img src="img/fjords.jpg" alt="Fjords" style="width:100%">
+                                <div class="caption">
+                                    <p>titre.</p>
+                                    <p>prix.</p>
+                                    <p>description.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="col-sm-2 sidenav">
+                <div class="well">
+                    <p>ADS</p>
+                </div>
+                <div class="well">
+                    <p>ADS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    #####################################################################################################################
+    
+
+
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE IF NOT EXISTS `images` (
+  `imageId` int(11) NOT NULL AUTO_INCREMENT,
+  `nomFichier` varchar(255) NOT NULL,
+  `titre` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `prix` decimal(7,2) NOT NULL,
+  `courteDescription` varchar(100),
+  `description` varchar(255) ,
+  PRIMARY KEY (`imageId`)
+);
+
+
+    CREATE TABLE images (
+    imageId int NOT NULL AUTO_INCREMENT,
+    nomFichier varchar(255) NOT NULL,
+    titre varchar(50),
+    type varchar(50),
+    prix float
+    courteDescription varchar(100),
+    description varchar(255),
+    PRIMARY KEY (imageId)
+); 
+    
+    
+    POPULATION DE LA TABLE IMAGES
+    
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/images_examples/fjords.jpg', 'fjords', 'ski', '100.90', 'Uniforme de ski', 'Cette uniforme de ski est très étanche. jhfd uzSD TUTZSD');
+COMMIT;
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/images_examples/img_chania.jpg', 'img_chania', 'VTT', '1700.90', 'Vélo suisse', 'Ce vélo suisse est très robuste. jhfd uzSD TUTZSD');
+COMMIT;
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/images_examples/img_chania.jpg', 'img_chania', 'VTT', '1100.90', 'Vélo français', 'Ce vélo français est très robuste. jhfd uzSD TUTZSD');
+COMMIT;
+    
+INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/images_examples/img_chania.jpg', 'img_chania', 'VTT', '1100.90', 'Vélo français', 'Ce vélo français est très robuste. jhfd uzSD TUTZSD');
+
+----------------------------
+Inserstion de velo        
+INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_001.jpg', 'images_001', 'VTT', '1201.90', 'Vélo images_001', 'Vélo images_001 - Vélo images_001 - Vélo images_001 - Vélo images_001');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_002.jpg', 'images_002', 'VTT', '1202.90', 'Vélo images_002', 'Vélo images_002 - Vélo images_002 - Vélo images_002 - Vélo images_002');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_003.jpg', 'images_003', 'VTT', '1203.90', 'Vélo images_003', 'Vélo images_003 - Vélo images_003 - Vélo images_003 - Vélo images_003');
+
+    
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_004.jpg', 'images_004', 'VTT', '1204.90', 'Vélo images_004', 'Vélo images_004 - Vélo images_004 - Vélo images_004 - Vélo images_004');
+
+    
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_005.jpg', 'images_005', 'VTT', '1205.90', 'Vélo images_005', 'Vélo images_005 - Vélo images_005 - Vélo images_005 - Vélo images_005');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_006.jpg', 'images_006', 'VTT', '1206.90', 'Vélo images_006', 'Vélo images_006 - Vélo images_006 - Vélo images_006 - Vélo images_006');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_007.jpg', 'images_007', 'VTT', '1207.90', 'Vélo images_007', 'Vélo images_007 - Vélo images_007 - Vélo images_007 - Vélo images_007');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_008.jpg', 'images_008', 'VTT', '1208.90', 'Vélo images_008', 'Vélo images_008 - Vélo images_008 - Vélo images_008 - Vélo images_008');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_009.jpg', 'images_009', 'VTT', '1209.90', 'Vélo images_009', 'Vélo images_009 - Vélo images_009 - Vélo images_009 - Vélo images_009');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_010.jpg', 'images_010', 'VTT', '1210.90', 'Vélo images_010', 'Vélo images_010 - Vélo images_010 - Vélo images_010 - Vélo images_010');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_011.jpg', 'images_011', 'VTT', '1211.90', 'Vélo images_011', 'Vélo images_011 - Vélo images_011 - Vélo images_011 - Vélo images_011');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_012.jpg', 'images_012', 'VTT', '1212.90', 'Vélo images_012', 'Vélo images_012 - Vélo images_012 - Vélo images_012 - Vélo images_012');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_013.jpg', 'images_013', 'VTT', '1213.90', 'Vélo images_013', 'Vélo images_013 - Vélo images_013 - Vélo images_013 - Vélo images_013');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_014.jpg', 'images_014', 'VTT', '1214.90', 'Vélo images_014', 'Vélo images_014 - Vélo images_014 - Vélo images_014 - Vélo images_014');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_015.jpg', 'images_015', 'VTT', '1215.90', 'Vélo images_015', 'Vélo images_015 - Vélo images_015 - Vélo images_015 - Vélo images_015');
+
+    INSERT INTO `images` (`imageId`,`nomFichier`, `titre`, `type`, `prix`, `courteDescription`, `description`) VALUES
+    (NULL,'img/shop_velo/images_016.jpg', 'images_016', 'VTT', '1216.90', 'Vélo images_016', 'Vélo images_016 - Vélo images_016 - Vélo images_016 - Vélo images_016');
