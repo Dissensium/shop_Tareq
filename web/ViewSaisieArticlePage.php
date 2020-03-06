@@ -16,28 +16,28 @@
         <h2>Saisie article</h2>
         <form action="Controllers/SaisieArticleController.php" method="post">
             <div class="form-group">
-                <label for="nomFichier">nomFichier:</label>
-                <input type="text" class="form-control" id="nomFichier" name="nomFichier" placeholder="Entrer Chemin relatif du fichier">
+                <label for="nomFichier">Nom de Fichier:</label>
+                <input type="text" class="form-control" id="nomFichier" name="nomFichier" placeholder="Entrer le Chemin relatif du fichier">
             </div>
             <div class="form-group">
-                <label for="titre">titre:</label>
-                <input type="text" class="form-control" id="titre" name="titre" placeholder="Enter titre">
+                <label for="titre">Titre:</label>
+                <input type="text" class="form-control" id="titre" name="titre" placeholder="Entrer un titre">
             </div>
             <div class="form-group">
-                <label for="type">type:</label>
-                <input type="text" class="form-control" id="type" name="type" placeholder="Enter type">
+                <label for="type">Type:</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder="Entrer un type">
             </div>
             <div class="form-group">
-                <label for="prix">prix:</label>
-                <input type="text" class="form-control" id="prix" name="prix" placeholder="Enter prix">
+                <label for="prix">Prix:</label>
+                <input type="text" class="form-control" id="prix" name="prix" placeholder="Entrer un prix">
             </div>
             <div class="form-group">
-                <label for="courteDescription">courteDescription:</label>
-                <input type="text" class="form-control" id="courteDescription" name="courteDescription" placeholder="Enter courteDescription">
+                <label for="courteDescription">Courte Description:</label>
+                <input type="text" class="form-control" id="courteDescription" name="courteDescription" placeholder="Entrer une courte Description">
             </div>
             <div class="form-group">
-                <label for="longueDescription">longueDescription:</label>
-                <input type="text" class="form-control" id="longueDescription" name="longueDescription" placeholder="Enter longueDescription">
+                <label for="longueDescription">Longue Description:</label>
+                <input type="text" class="form-control" id="longueDescription" name="longueDescription" placeholder="Entrer une longue Description">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
