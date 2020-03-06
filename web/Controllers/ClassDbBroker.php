@@ -56,4 +56,8 @@ class ClassDbBroker
     public function addMember($nikname, $email, $password){
         $myPdo = $this->myClassDbManager->addMember($nikname, $email, $password);
     }
+
+    public function testGitHub(){
+        return true;
+    }
 }
