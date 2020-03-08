@@ -63,4 +63,8 @@ class ClassConfig
     {
         return $this->iniArray['password'];
     }
+    public function getSalt()
+    {
+      return $this->iniArray['salt']
+    }
 }

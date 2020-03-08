@@ -57,7 +57,9 @@ class ClassDbBroker
         $myPdo = $this->myClassDbManager->addMember($nikname, $email, $password);
     }
 
-    public function testGitHub(){
-        return true;
+    public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
+        $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
+
     }
+
 }

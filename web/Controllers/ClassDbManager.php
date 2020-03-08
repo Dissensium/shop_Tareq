@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class ClassDbManager
 {
@@ -15,10 +15,10 @@ class ClassDbManager
         $this->dbname = $dbname;
         $this->user = $user;
         $this->password = $password;
-         
+
         //Connect to the MySQL server using PDO.
         $this->pdo = new PDO("mysql:host=$host;dbname=$dbname;port=$port", $user, $password);
-        
+
     }
 
     public function getPdo(){
@@ -29,7 +29,7 @@ class ClassDbManager
         try {
             $sql = "SHOW TABLES";
             //Prepare our SQL statement,
-            $statement = $this->pdo->prepare($sql);            
+            $statement = $this->pdo->prepare($sql);
             //Execute the statement.
             $statement->execute();
             //Fetch the rows from our statement.
@@ -46,11 +46,11 @@ class ClassDbManager
         return 1;
     }
 
-    public function showAllDatabase(){         
-     
+    public function showAllDatabase(){
+
         //Execute a "SHOW DATABASES" SQL query.
         $stmt = $this->pdo->query('SHOW DATABASES');
-        
+
         //Fetch the columns from the returned PDOStatement
         $databases = $stmt->fetchAll(PDO::FETCH_COLUMN);
         //var_dump($databases);
@@ -59,7 +59,7 @@ class ClassDbManager
             //$database will contain the database name
             //in a string format
             echo $database, '<br>';
-        }    
+        }
         return 1;
     }
 
@@ -77,6 +77,10 @@ class ClassDbManager
     public function addMember($nikname, $email, $password){
         $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
         $insertmbr->execute(array($nikname, $email, $password));
+    }
+    public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
+        $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
+        $insertArticle->execute(array($nomFichier,$titre,$type,$prix,$courteDescription,$Description));
     }
 }
 

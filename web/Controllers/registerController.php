@@ -1,14 +1,16 @@
 <?php
 
 include_once "ClassDbBroker.php";
+include_once "ClassConfig.php";
 
 
 if(isset($_POST['submit'])) {
    $nikname = htmlspecialchars($_POST['nikname']);
    $email = htmlspecialchars($_POST['email']);
    $emailConfirmation = htmlspecialchars($_POST['emailConfirmation']);
-   $password = sha1($_POST['password']);
-   $passwordConfirmation = sha1($_POST['passwordConfirmation']);
+   $salt = ClassConfig::getInstance()->getSalt();
+   $password = sha1($salt.$_POST['password']);
+   $passwordConfirmation = sha1($salt.$_POST['passwordConfirmation']);
 
    if(!empty($nikname) AND !empty($email) AND !empty($emailConfirmation) AND !empty($password) AND !empty($passwordConfirmation)) {
       $niknamelength = strlen($nikname);
@@ -18,7 +20,7 @@ if(isset($_POST['submit'])) {
                $myClassDbBroker = ClassDbBroker::getinstance();
                if(!$myClassDbBroker->emailExiste($email)) {
                   if($password == $passwordConfirmation) {
-                     $myClassDbBroker->addMember($nikname, $email, $password);                     
+                     $myClassDbBroker->addMember($nikname, $email, $password);
                      $erreur = "Votre compte a bien été créé !";
                   } else {
                      $erreur = "Vos mots de passes ne correspondent pas !";
@@ -38,6 +40,6 @@ if(isset($_POST['submit'])) {
    } else {
       $erreur = "Tous les champs doivent être complétés !";
    }
-      
+
    echo $erreur;
 }

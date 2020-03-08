@@ -26,7 +26,7 @@
         <td>Default</td>
         <td>Defaultson</td>
         <td>def@somemail.com</td>
-      </tr>      
+      </tr>
       <tr class="success">
         <td>Success</td>
         <td>Doe</td>
@@ -51,7 +51,7 @@
         <td>Active</td>
         <td>Activeson</td>
         <td>act@example.com</td>
-      
+
       </tr>
     </tbody>
   </table>
@@ -65,12 +65,12 @@
     </thead>
     <tbody>
 
-  <?php 
-  
+  <?php
+
   for ($i = 0;$i <= 10;$i++){
 
     $html_string='<tr class="';
-    
+
     if ($i%2 == 1)
         $html_string .= "info";
    else
@@ -80,21 +80,21 @@
     $html_string.="<td>$i</td>\n";
     $html_string.="<th>$i*$i</th>\n";;
 
-   
-    
-  
+
+
+
      //echo("nombre ".$i." son carré est ".$i*$i."</br> \n");
-    
+
     echo $html_string;
 
 
 
 
   }
+
   
-  
-  
-  
+
+
   ?>
     </tbody>
 
@@ -107,7 +107,7 @@
     }
 
 ?>
-    
+
 </div>
 
 </body>
