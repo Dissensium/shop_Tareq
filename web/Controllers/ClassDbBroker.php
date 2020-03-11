@@ -61,5 +61,12 @@ class ClassDbBroker
         $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
 
     }
+    public function isUserExists($usernam,$password)
+    {
+        
+        return $this->myClassDbManager->isUserExists($usernam,$password);
+       
+
+    }
 
 }

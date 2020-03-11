@@ -82,6 +82,25 @@ class ClassDbManager
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
         $insertArticle->execute(array($nomFichier,$titre,$type,$prix,$courteDescription,$Description));
     }
+    public function isUserExists($username,$password)
+    {
+        //requête
+        //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
+
+        //$query = $this->pdo->prepare("SELECT * FROM membres where mail=$username and motdepasse=$password");
+        echo "SELECT * FROM membres where mail=$username <br> \n";
+        $query = $this->pdo->prepare('SELECT * FROM membres where mail="'.$username.'" and motdepasse="'.$password.'"');
+        $query->execute ();
+        $count = $query->rowCount();
+        echo " $count <br> \n";
+        $resulat=false;
+        if ( $count > 0 ) {   
+               echo "Login ou password corre" ;
+               $resulat = true;
+        }
+        return $resulat;
+
+    }
 }
 
 ?>
