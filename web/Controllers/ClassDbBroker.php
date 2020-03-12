@@ -63,10 +63,14 @@ class ClassDbBroker
     }
     public function isUserExists($usernam,$password)
     {
-        
+
         return $this->myClassDbManager->isUserExists($usernam,$password);
-       
 
     }
+    public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel){
+      $myPdo = $this->myClassDbManager->addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel);
+    }
+
+
 
 }

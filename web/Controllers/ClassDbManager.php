@@ -94,12 +94,16 @@ class ClassDbManager
         $count = $query->rowCount();
         echo " $count <br> \n";
         $resulat=false;
-        if ( $count > 0 ) {   
+        if ( $count > 0 ) {
                echo "Login ou password corre" ;
                $resulat = true;
         }
         return $resulat;
-
+        }
+    public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel)
+    {
+      $insertPers = $this->pdo->prepare("INSERT INTO personne(nom, prenom, pays, codepostal, adressedelivraison, adressedefacturation, numtel) VALUES(?, ?, ?, ?, ?, ?, ?)");
+      $insertPers->execute(array($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel));
     }
 }
 
