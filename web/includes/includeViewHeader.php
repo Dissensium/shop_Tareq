@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <style>
         .fakeimg {
-            height: 200px;
+            height: 100px;
             background: #aaa;
         }
     </style>
@@ -29,7 +30,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="http://localhost/shop_Tareq/web/viewLoginPage.php">login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

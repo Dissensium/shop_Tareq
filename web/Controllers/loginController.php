@@ -13,21 +13,15 @@ define("ADMIN", "admin");
 
 
 $salt = ClassConfig::getInstance()->getSalt();
+
 $email = htmlspecialchars($_POST['username']);
 $password = htmlspecialchars($_POST['password']);
 $password = sha1($salt . $password);
 
-
-
-
-
-
-
-
+echo "loginController";
 $myClassDbBroker = ClassDbBroker::getinstance();
 $myClassDbBroker->getUserRole($email, $password);
-
-$roleST = $myClassDbBroker->getUserRole($email, $password);
+$roleSt = $myClassDbBroker->getUserRole($email, $password);
 if ($roleSt == ADMIN) {
    $_SESSION['username'] = $email;
    $_SESSION['password'] = $password;
@@ -37,13 +31,11 @@ if ($roleSt == ADMIN) {
       $_SESSION['username'] = $email;
       $_SESSION['password'] = $password;
       $_SESSION['role'] = CLIENT;
+   } else {
+      $_SESSION['role'] = "";
    }
 }
 
-
+header('Location: http://localhost/shop_Tareq/web/viewHomePage.php');
   
-
-
-
-
 //}

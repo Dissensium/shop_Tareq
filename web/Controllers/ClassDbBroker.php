@@ -40,9 +40,17 @@ class ClassDbBroker
 
 
 
-    public function getArticlesByCaterory($myCategory)
+    public function getAllArticles($myCategory)
     {
         $sqlQuery = 'SELECT * FROM `articles`';
+        $rows = $this->myClassDbManager->getRowsFromSelectQuery($sqlQuery);
+        return $rows;
+    }
+
+    
+    public function getArticlesByCaterory($myCategory)
+    {
+        $sqlQuery = 'SELECT * FROM `articles` where type= '. "'$myCategory'". '';
         $rows = $this->myClassDbManager->getRowsFromSelectQuery($sqlQuery);
         return $rows;
     }
@@ -61,25 +69,34 @@ class ClassDbBroker
         return $result;
     }
 
-    public function addMember($nikname, $email, $password, $role){
+    public function addMember($nikname, $email, $password, $role)
+    {
         $myPdo = $this->myClassDbManager->addMember($nikname, $email, $password, $role);
     }
 
-    public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
-        $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
-
-    }
-    public function getUserRole($usernam,$password)
+    public function addArticle($nomFichier, $titre, $type, $prix, $courteDescription, $Description)
     {
-
-        return $this->myClassDbManager->getUserRole($usernam,$password);
-
-    }
-    
-    public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel){
-      $myPdo = $this->myClassDbManager->addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel);
+        $myPdo = $this->myClassDbManager->addArticle($nomFichier, $titre, $type, $prix, $courteDescription, $Description);
     }
 
+    public function getUserRole($usernam, $password)
+    {
+        $roleSt = "";
+        $rows = $this->myClassDbManager->getUserRole($usernam, $password);
+        if (sizeof($rows) == 1) {
+            var_dump($rows[0]['role']);
+            $roleSt = $rows[0]['role'];
+        } else {
+            if (sizeof($rows) >= 1) {
+                echo "Problème de consistance de la base de données <br> \n";
+            }
+        }
+        return $roleSt;
 
+    }
 
+    public function addPersonne($Nom, $prénom, $pays, $codepostal, $adressedelivraison, $adressedefacturation, $numtel)
+    {
+        $myPdo = $this->myClassDbManager->addPersonne($Nom, $prénom, $pays, $codepostal, $adressedelivraison, $adressedefacturation, $numtel);
+    }
 }
