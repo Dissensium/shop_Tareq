@@ -53,18 +53,18 @@ class ClassDbBroker
         return $result;
     }
 
-    public function addMember($nikname, $email, $password){
-        $myPdo = $this->myClassDbManager->addMember($nikname, $email, $password);
+    public function addMember($nikname, $email, $password, $role){
+        $myPdo = $this->myClassDbManager->addMember($nikname, $email, $password, $role);
     }
 
     public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
         $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
 
     }
-    public function isUserExists($usernam,$password)
+    public function getUserRole($usernam,$password)
     {
 
-        return $this->myClassDbManager->isUserExists($usernam,$password);
+        return $this->myClassDbManager->getUserRole($usernam,$password);
 
     }
     public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel){

@@ -74,15 +74,15 @@ class ClassDbManager
     }
 
 
-    public function addMember($nikname, $email, $password){
-        $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
-        $insertmbr->execute(array($nikname, $email, $password));
+    public function addMember($nikname, $email, $password, $role){
+        $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse, role) VALUES(?, ?, ?, ?)");
+        $insertmbr->execute(array($nikname, $email, $password, $role));
     }
     public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
         $insertArticle->execute(array($nomFichier,$titre,$type,$prix,$courteDescription,$Description));
     }
-    public function isUserExists($username,$password)
+    public function getUserRolebis($username,$password)
     {
         //requête
         //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
@@ -95,11 +95,37 @@ class ClassDbManager
         echo " $count <br> \n";
         $resulat=false;
         if ( $count > 0 ) {
-               echo "Login ou password corre" ;
+               echo "Login ou password correct" ;
                $resulat = true;
         }
         return $resulat;
-        }
+      }public function getUserRole($username,$password)
+        {
+           $resultat ="";
+            //requête
+            //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
+
+            //$query = $this->pdo->prepare("SELECT * FROM membres where mail=$username and motdepasse=$password");
+            $rows = array();
+            $sqlQuery ='SELECT role FROM membres where mail="'.$username.'" and motdepasse="'.$password.'"';
+            $stmt = $this->pdo->query($sqlQuery);
+
+           while ($row = $stmt->fetch()) {
+                $rows[] = $row;
+            }
+
+            $nbMembres = sizeof($rows);
+            if ($nbMembres==0) {
+              $resultat =""
+            }else{
+              $resultat=  $rows[0];
+            }
+             echo $resultat;
+            die;
+            }
+
+
+
     public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel)
     {
       $insertPers = $this->pdo->prepare("INSERT INTO personne(nom, prenom, pays, codepostal, adressedelivraison, adressedefacturation, numtel) VALUES(?, ?, ?, ?, ?, ?, ?)");

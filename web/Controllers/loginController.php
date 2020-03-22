@@ -23,9 +23,9 @@ $password = sha1($salt.$password);
 
 
    $myClassDbBroker = ClassDbBroker::getinstance();
-             
-               
-   if ($myClassDbBroker->isUserExists($email,$password) ){
+    $myClassDbBroker->getUserRole($email,$password);         
+
+   if ($myClassDbBroker->getUserRole($email,$password) ){
     $_SESSION['username'] = $email;
     $_SESSION['password'] = $password;
     echo "je suis loger";
@@ -33,13 +33,11 @@ $password = sha1($salt.$password);
    }else{
     echo "je suis loger";
    }
-   
 
 
 
 
-   
-        
+
+
+
 //}
-
-
