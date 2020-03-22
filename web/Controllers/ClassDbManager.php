@@ -9,8 +9,9 @@ class ClassDbManager
     private $password;
     private $pdo;
 
-    public function __construct($host,$port,$dbname,$user, $password){
-        $this->host = $host ;
+    public function __construct($host, $port, $dbname, $user, $password)
+    {
+        $this->host = $host;
         $this->port = $port;
         $this->dbname = $dbname;
         $this->user = $user;
@@ -18,14 +19,15 @@ class ClassDbManager
 
         //Connect to the MySQL server using PDO.
         $this->pdo = new PDO("mysql:host=$host;dbname=$dbname;port=$port", $user, $password);
-
     }
 
-    public function getPdo(){
+    public function getPdo()
+    {
         return $this->pdo;
     }
 
-    public function showAllTable(){
+    public function showAllTable()
+    {
         try {
             $sql = "SHOW TABLES";
             //Prepare our SQL statement,
@@ -35,7 +37,7 @@ class ClassDbManager
             //Fetch the rows from our statement.
             $tables = $statement->fetchAll(PDO::FETCH_NUM);
             //Loop through our table names.
-            foreach($tables as $table){
+            foreach ($tables as $table) {
                 //Print the table name out onto the page.
                 echo $table[0], '<br>';
             }
@@ -46,7 +48,8 @@ class ClassDbManager
         return 1;
     }
 
-    public function showAllDatabase(){
+    public function showAllDatabase()
+    {
 
         //Execute a "SHOW DATABASES" SQL query.
         $stmt = $this->pdo->query('SHOW DATABASES');
@@ -55,7 +58,7 @@ class ClassDbManager
         $databases = $stmt->fetchAll(PDO::FETCH_COLUMN);
         //var_dump($databases);
         //Loop through the database list and print it out.
-        foreach($databases as $database){
+        foreach ($databases as $database) {
             //$database will contain the database name
             //in a string format
             echo $database, '<br>';
@@ -63,7 +66,8 @@ class ClassDbManager
         return 1;
     }
 
-    public function getRowsFromSelectQuery($sqlQuery){
+    public function getRowsFromSelectQuery($sqlQuery)
+    {
         $rows = array();
         $stmt = $this->pdo->query($sqlQuery);
         while ($row = $stmt->fetch()) {
@@ -73,38 +77,81 @@ class ClassDbManager
         return $rows;
     }
 
+    public function getRowsFromSelectQuery_bis($sqlQuery)
+    {
+        $rows = array();
+        $data = $this->pdo->query($sqlQuery)->fetchAll();
+        foreach ($data as $row) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
 
-    public function addMember($nikname, $email, $password){
-        $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
-        $insertmbr->execute(array($nikname, $email, $password));
+
+    public function addMember($nikname, $email, $password, $role)
+    {
+        $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse, role) VALUES(?, ?, ?, ?)");
+        $insertmbr->execute(array($nikname, $email, $password, $role));
     }
-    public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
+    public function addArticle($nomFichier, $titre, $type, $prix, $courteDescription, $Description)
+    {
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
-        $insertArticle->execute(array($nomFichier,$titre,$type,$prix,$courteDescription,$Description));
+        $insertArticle->execute(array($nomFichier, $titre, $type, $prix, $courteDescription, $Description));
     }
-    public function isUserExists($username,$password)
+    public function getUserRolebis($username, $password)
     {
         //requête
         //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
 
         //$query = $this->pdo->prepare("SELECT * FROM membres where mail=$username and motdepasse=$password");
         echo "SELECT * FROM membres where mail=$username <br> \n";
-        $query = $this->pdo->prepare('SELECT * FROM membres where mail="'.$username.'" and motdepasse="'.$password.'"');
-        $query->execute ();
+        $query = $this->pdo->prepare('SELECT * FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"');
+        $query->execute();
         $count = $query->rowCount();
         echo " $count <br> \n";
-        $resulat=false;
-        if ( $count > 0 ) {
-               echo "Login ou password corre" ;
-               $resulat = true;
+        $resulat = false;
+        if ($count > 0) {
+
+            $resulat = true;
         }
         return $resulat;
-        }
-    public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel)
+<<<<<<< HEAD
+    }
+=======
+      }
+
+
+      public function getUserRole($username,$password)
+        {
+           $resultat ="";
+            //requête
+            //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
+
+            //$query = $this->pdo->prepare("SELECT * FROM membres where mail=$username and motdepasse=$password");
+            $rows = array();
+            $sqlQuery ='SELECT role FROM membres where mail="'.$username.'" and motdepasse="'.$password.'"';
+            $stmt = $this->pdo->query($sqlQuery);
+
+           while ($row = $stmt->fetch()) {
+                $rows[] = $row;
+            }
+>>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
+
+
+    public function getUserRole($username, $password)
     {
-      $insertPers = $this->pdo->prepare("INSERT INTO personne(nom, prenom, pays, codepostal, adressedelivraison, adressedefacturation, numtel) VALUES(?, ?, ?, ?, ?, ?, ?)");
-      $insertPers->execute(array($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel));
+        $sqlQuery = $this->pdo->prepare('SELECT * FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"');
+        return $this->getRowsFromSelectQuery($sqlQuery);
+        die;
+    }
+
+
+
+    public function addPersonne($Nom, $prénom, $pays, $codepostal, $adressedelivraison, $adressedefacturation, $numtel)
+    {
+        echo "addPersonne in " . __FILE__ . "<br> \n";
+        $insertPers = $this->pdo->prepare("INSERT INTO personne(nom, prenom, pays, codepostal, adressedelivraison, adressedefacturation, numtel) VALUES(?, ?, ?, ?, ?, ?, ?)");
+        $insertPers->execute(array($Nom, $prénom, $pays, $codepostal, $adressedelivraison, $adressedefacturation, $numtel));
+        echo "end addPersonne  in " . __FILE__ . "<br> \n";
     }
 }
-
-?>
