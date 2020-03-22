@@ -88,12 +88,7 @@ class ClassDbManager
     }
 
 
-<<<<<<< HEAD
-    public function addMember($nikname, $email, $password, $role)
-    {
-=======
     public function addMember($nikname, $email, $password, $role){
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
         $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse, role) VALUES(?, ?, ?, ?)");
         $insertmbr->execute(array($nikname, $email, $password, $role));
     }
@@ -102,11 +97,7 @@ class ClassDbManager
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
         $insertArticle->execute(array($nomFichier, $titre, $type, $prix, $courteDescription, $Description));
     }
-<<<<<<< HEAD
-    public function getUserRolebis($username, $password)
-=======
     public function getUserRolebis($username,$password)
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
     {
         //requête
         //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
