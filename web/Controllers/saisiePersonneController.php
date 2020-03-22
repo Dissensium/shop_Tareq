@@ -5,7 +5,7 @@ echo "<pre>";
 print_r($_POST);
 echo "</pre>";
 
-//if(isset($_POST['submit'])) {
+if(isset($_POST['nom'])) {
    $Nom = htmlspecialchars($_POST['nom']);
    $prénom = htmlspecialchars($_POST['prenom']);
    $pays = htmlspecialchars($_POST['pays']);
@@ -16,11 +16,9 @@ echo "</pre>";
   echo "post_submit ok";
    if(!empty($Nom) AND !empty($prénom) AND !empty($pays) AND !empty($codepostal) AND !empty($adressedelivraison)
    AND !empty($adressedefacturation)AND !empty($numtel)) {
-     echo "premier test ok";
-      if(is_numeric($numtel)) {
+
         $myClassDbBroker = ClassDbBroker::getinstance();
         $myClassDbBroker->addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel);
-        echo "test is_numeric ok";
-      }
+
     }
-  //}
+  }

@@ -1,11 +1,13 @@
 <?php
 include_once "ClassDbBroker.php";
+session_start();
+$email = $_SESSION['username'];
+$password =$_SESSION['password'];
+$myClassDbBroker = ClassDbBroker::getinstance();
+if ($myClassDbBroker->isUserExists($email,$password) ){
+  
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-
-//if(isset($_POST['submit'])) {
+    //if(isset($_POST['submit'])) {
    $nomFichier = htmlspecialchars($_POST['nomFichier']);
    $titre = htmlspecialchars($_POST['titre']);
    $type = htmlspecialchars($_POST['type']);
@@ -22,4 +24,11 @@ echo "</pre>";
         echo "test is_numeric ok";
       }
     }
+    
+
+   }else{
+    
+  
+}
+
   //}
