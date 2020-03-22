@@ -32,14 +32,6 @@ class ClassDbBroker
         return self::$MySingletonInstance;
     }
 
-    public function getRowsFromSelectQuery($sqlQuery)
-    {
-        $rows = $this->myClassDbManager->getRowsFromSelectQuery($sqlQuery);
-        return $rows;
-    }
-
-
-
     public function getArticlesByCaterory($myCategory)
     {
         $sqlQuery = 'SELECT * FROM `articles`';
@@ -69,29 +61,12 @@ class ClassDbBroker
         $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
 
     }
-<<<<<<< HEAD
-
-=======
     public function getUserRole($usernam,$password)
     {
 
         return $this->myClassDbManager->getUserRole($usernam,$password);
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
 
-    public function getUserRole($usernam,$password)
-    {
-        $roleSt = "";
-        $rows= $this->myClassDbManager->getUserRole($usernam,$password);
-        if (sizeof($rows) == 1){
-            var_dump($rows[0]['role']);
-            $roleSt = $rows[0]['role'];
-        }else {
-            if (sizeof($rows) >= 1){
-                echo "Problème de consistance de la base de données <br> \n";
-            }
-        }
     }
-    
     public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel){
       $myPdo = $this->myClassDbManager->addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel);
     }
