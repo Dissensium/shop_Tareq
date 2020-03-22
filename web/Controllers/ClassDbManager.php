@@ -99,7 +99,10 @@ class ClassDbManager
                $resulat = true;
         }
         return $resulat;
-      }public function getUserRole($username,$password)
+      }
+
+
+      public function getUserRole($username,$password)
         {
            $resultat ="";
             //requête
