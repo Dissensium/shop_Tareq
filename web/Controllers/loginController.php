@@ -25,18 +25,6 @@ $password = sha1($salt.$password);
 
 
    $myClassDbBroker = ClassDbBroker::getinstance();
-<<<<<<< HEAD
-   $roleSt = $myClassDbBroker->getUserRole($email,$password);         
-   echo  $roleSt;
- 
-      if ( $roleSt==CLIENT){
-         echo "ADMIN <br> \n";
-         $_SESSION['username']=$email;
-         $_SESSION['password']=$password;
-         $_SESSION['role']=CLIENT;
-
-      }else{
-=======
     $myClassDbBroker->getUserRole($email,$password);         
 
    if ($myClassDbBroker->getUserRole($email,$password) ){
@@ -47,7 +35,6 @@ $password = sha1($salt.$password);
    }else{
     echo "je suis loger";
    }
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
 
          if ( $roleSt==ADMIN){
             $_SESSION['username']=$email;
@@ -64,10 +51,4 @@ $password = sha1($salt.$password);
 
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
 //}
