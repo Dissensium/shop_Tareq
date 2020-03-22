@@ -66,7 +66,7 @@ class ClassDbManager
         return 1;
     }
 
-    public function getRowsFromSelectQuery($sqlQuery)
+    public function getRowsFromSelectQuery_bis($sqlQuery)
     {
         $rows = array();
         $stmt = $this->pdo->query($sqlQuery);
@@ -77,7 +77,7 @@ class ClassDbManager
         return $rows;
     }
 
-    public function getRowsFromSelectQuery_bis($sqlQuery)
+    public function getRowsFromSelectQuery($sqlQuery)
     {
         $rows = array();
         $data = $this->pdo->query($sqlQuery)->fetchAll();
@@ -88,7 +88,8 @@ class ClassDbManager
     }
 
 
-    public function addMember($nikname, $email, $password, $role){
+    public function addMember($nikname, $email, $password, $role)
+    {
         $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse, role) VALUES(?, ?, ?, ?)");
         $insertmbr->execute(array($nikname, $email, $password, $role));
     }
@@ -97,77 +98,12 @@ class ClassDbManager
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
         $insertArticle->execute(array($nomFichier, $titre, $type, $prix, $courteDescription, $Description));
     }
-    public function getUserRolebis($username,$password)
-    {
-        //requête
-        //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
-
-        //$query = $this->pdo->prepare("SELECT * FROM membres where mail=$username and motdepasse=$password");
-        echo "SELECT * FROM membres where mail=$username <br> \n";
-        $query = $this->pdo->prepare('SELECT * FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"');
-        $query->execute();
-        $count = $query->rowCount();
-        echo " $count <br> \n";
-<<<<<<< HEAD
-        $resulat = false;
-        if ($count > 0) {
-
-            $resulat = true;
-        }
-        return $resulat;
-<<<<<<< HEAD
-    }
-=======
-=======
-        $resulat=false;
-        if ( $count > 0 ) {
-               echo "Login ou password correct" ;
-               $resulat = true;
-        }
-        return $resulat;
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
-      }
-
-
-      public function getUserRole($username,$password)
-        {
-           $resultat ="";
-            //requête
-            //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
-
-            //$query = $this->pdo->prepare("SELECT * FROM membres where mail=$username and motdepasse=$password");
-            $rows = array();
-            $sqlQuery ='SELECT role FROM membres where mail="'.$username.'" and motdepasse="'.$password.'"';
-            $stmt = $this->pdo->query($sqlQuery);
-
-           while ($row = $stmt->fetch()) {
-                $rows[] = $row;
-            }
-<<<<<<< HEAD
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
-
-
+   
     public function getUserRole($username, $password)
-=======
-
-            $nbMembres = sizeof($rows);
-            if ($nbMembres==0) {
-              $resultat =""
-            }else{
-              $resultat=  $rows[0];
-            }
-             echo $resultat;
-            die;
-            }
-
-
-
-    public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel)
->>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
     {
-        $sqlQuery = $this->pdo->prepare('SELECT * FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"');
+        $sqlQuery = 'SELECT role FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"';
         return $this->getRowsFromSelectQuery($sqlQuery);
-        die;
+
     }
 
 
