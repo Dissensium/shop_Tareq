@@ -11,7 +11,7 @@ class ClassConfig
     private function __construct()
     {
         $configFileName = "../config.ini";
-        echo "configFileName : $configFileName <br>\n";
+        //echo "configFileName : $configFileName <br>\n";
         $this->iniArray = parse_ini_file($configFileName);
     }
 
