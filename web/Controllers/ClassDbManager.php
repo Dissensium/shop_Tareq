@@ -63,7 +63,12 @@ class ClassDbManager
         return 1;
     }
 
+<<<<<<< HEAD
     public function getRowsFromSelectQuery($sqlQuery){
+=======
+    public function getRowsFromSelectQuery_bis($sqlQuery)
+    {
+>>>>>>> 995d6cb0ad465c5de9b54f4b2415cd55add7b1f9
         $rows = array();
         $stmt = $this->pdo->query($sqlQuery);
         while ($row = $stmt->fetch()) {
@@ -72,7 +77,24 @@ class ClassDbManager
 
         return $rows;
     }
+<<<<<<< HEAD
     public function addMember($nikname, $email, $password, $role){
+=======
+
+    public function getRowsFromSelectQuery($sqlQuery)
+    {
+        $rows = array();
+        $data = $this->pdo->query($sqlQuery)->fetchAll();
+        foreach ($data as $row) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+
+    public function addMember($nikname, $email, $password, $role)
+    {
+>>>>>>> 995d6cb0ad465c5de9b54f4b2415cd55add7b1f9
         $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse, role) VALUES(?, ?, ?, ?)");
         $insertmbr->execute(array($nikname, $email, $password, $role));
     }
@@ -80,6 +102,7 @@ class ClassDbManager
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
         $insertArticle->execute(array($nomFichier,$titre,$type,$prix,$courteDescription,$Description));
     }
+<<<<<<< HEAD
 
     public function getUserRole($username, $password)
     {
@@ -98,10 +121,14 @@ class ClassDbManager
 
     public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel)
 
+=======
+   
+    public function getUserRole($username, $password)
+>>>>>>> 995d6cb0ad465c5de9b54f4b2415cd55add7b1f9
     {
-        $sqlQuery = $this->pdo->prepare('SELECT * FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"');
+        $sqlQuery = 'SELECT role FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"';
         return $this->getRowsFromSelectQuery($sqlQuery);
-        die;
+
     }
 
 

@@ -32,9 +32,29 @@ class ClassDbBroker
         return self::$MySingletonInstance;
     }
 
+<<<<<<< HEAD
     public function getArticlesByCaterory($myCategory)
+=======
+    public function getRowsFromSelectQuery($sqlQuery)
+    {
+        $rows = $this->myClassDbManager->getRowsFromSelectQuery($sqlQuery);
+        return $rows;
+    }
+
+
+
+    public function getAllArticles($myCategory)
+>>>>>>> 995d6cb0ad465c5de9b54f4b2415cd55add7b1f9
     {
         $sqlQuery = 'SELECT * FROM `articles`';
+        $rows = $this->myClassDbManager->getRowsFromSelectQuery($sqlQuery);
+        return $rows;
+    }
+
+    
+    public function getArticlesByCaterory($myCategory)
+    {
+        $sqlQuery = 'SELECT * FROM `articles` where type= '. "'$myCategory'". '';
         $rows = $this->myClassDbManager->getRowsFromSelectQuery($sqlQuery);
         return $rows;
     }
@@ -53,17 +73,25 @@ class ClassDbBroker
         return $result;
     }
 
-    public function addMember($nikname, $email, $password, $role){
+    public function addMember($nikname, $email, $password, $role)
+    {
         $myPdo = $this->myClassDbManager->addMember($nikname, $email, $password, $role);
     }
 
+<<<<<<< HEAD
     public function addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description){
         $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
 
     }
     public function getUserRole($usernam,$password)
+=======
+    public function addArticle($nomFichier, $titre, $type, $prix, $courteDescription, $Description)
+>>>>>>> 995d6cb0ad465c5de9b54f4b2415cd55add7b1f9
     {
+        $myPdo = $this->myClassDbManager->addArticle($nomFichier, $titre, $type, $prix, $courteDescription, $Description);
+    }
 
+<<<<<<< HEAD
         return $this->myClassDbManager->getUserRole($usernam,$password);
 
     }
@@ -71,6 +99,26 @@ class ClassDbBroker
       $myPdo = $this->myClassDbManager->addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel);
     }
 
+=======
+    public function getUserRole($usernam, $password)
+    {
+        $roleSt = "";
+        $rows = $this->myClassDbManager->getUserRole($usernam, $password);
+        if (sizeof($rows) == 1) {
+            var_dump($rows[0]['role']);
+            $roleSt = $rows[0]['role'];
+        } else {
+            if (sizeof($rows) >= 1) {
+                echo "Problème de consistance de la base de données <br> \n";
+            }
+        }
+        return $roleSt;
+>>>>>>> 995d6cb0ad465c5de9b54f4b2415cd55add7b1f9
 
+    }
 
+    public function addPersonne($Nom, $prénom, $pays, $codepostal, $adressedelivraison, $adressedefacturation, $numtel)
+    {
+        $myPdo = $this->myClassDbManager->addPersonne($Nom, $prénom, $pays, $codepostal, $adressedelivraison, $adressedefacturation, $numtel);
+    }
 }
