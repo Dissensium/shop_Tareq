@@ -88,8 +88,12 @@ class ClassDbManager
     }
 
 
+<<<<<<< HEAD
     public function addMember($nikname, $email, $password, $role)
     {
+=======
+    public function addMember($nikname, $email, $password, $role){
+>>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
         $insertmbr = $this->pdo->prepare("INSERT INTO membres(pseudo, mail, motdepasse, role) VALUES(?, ?, ?, ?)");
         $insertmbr->execute(array($nikname, $email, $password, $role));
     }
@@ -98,7 +102,11 @@ class ClassDbManager
         $insertArticle = $this->pdo->prepare("INSERT INTO articles(nomFichier, titre, type, prix, courteDescription, description) VALUES(?, ?, ?,?,?,?)");
         $insertArticle->execute(array($nomFichier, $titre, $type, $prix, $courteDescription, $Description));
     }
+<<<<<<< HEAD
     public function getUserRolebis($username, $password)
+=======
+    public function getUserRolebis($username,$password)
+>>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
     {
         //requête
         //$query = $this->pdo->prepare("SELECT EXISTS(SELECT * FROM membres where mail=$username and motdepasse=$password) ");
@@ -109,6 +117,7 @@ class ClassDbManager
         $query->execute();
         $count = $query->rowCount();
         echo " $count <br> \n";
+<<<<<<< HEAD
         $resulat = false;
         if ($count > 0) {
 
@@ -118,6 +127,14 @@ class ClassDbManager
 <<<<<<< HEAD
     }
 =======
+=======
+        $resulat=false;
+        if ( $count > 0 ) {
+               echo "Login ou password correct" ;
+               $resulat = true;
+        }
+        return $resulat;
+>>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
       }
 
 
@@ -135,10 +152,27 @@ class ClassDbManager
            while ($row = $stmt->fetch()) {
                 $rows[] = $row;
             }
+<<<<<<< HEAD
 >>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
 
 
     public function getUserRole($username, $password)
+=======
+
+            $nbMembres = sizeof($rows);
+            if ($nbMembres==0) {
+              $resultat =""
+            }else{
+              $resultat=  $rows[0];
+            }
+             echo $resultat;
+            die;
+            }
+
+
+
+    public function addPersonne($Nom,$prénom,$pays,$codepostal,$adressedelivraison,$adressedefacturation,$numtel)
+>>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
     {
         $sqlQuery = $this->pdo->prepare('SELECT * FROM membres where mail="' . $username . '" and motdepasse="' . $password . '"');
         return $this->getRowsFromSelectQuery($sqlQuery);

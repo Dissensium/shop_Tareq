@@ -69,7 +69,14 @@ class ClassDbBroker
         $myPdo = $this->myClassDbManager->addArticle($nomFichier,$titre,$type,$prix,$courteDescription,$Description);
 
     }
+<<<<<<< HEAD
 
+=======
+    public function getUserRole($usernam,$password)
+    {
+
+        return $this->myClassDbManager->getUserRole($usernam,$password);
+>>>>>>> ed6e00810b6a7c819ff01923dd31678488851050
 
     public function getUserRole($usernam,$password)
     {
